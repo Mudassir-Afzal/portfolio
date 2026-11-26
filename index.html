@@ -137,6 +137,62 @@ footer{padding:28px 0;border-top:1px solid var(--line);color:var(--muted);font-s
 .lb.open{display:flex}
 .lb img{max-height:92vh;max-width:96vw;border-radius:10px;box-shadow:0 12px 50px rgba(0,0,0,.6)}
 @media print{header.nav,.theme,.lb{display:none}section{padding:28px 0}}
+
+/* polish layer */
+:root{--radius:22px;--accent-2:#2d8fd5;--ring:0 0 0 4px color-mix(in srgb,var(--accent) 28%,transparent)}
+:root[data-theme="dark"]{--accent-2:#6bbcf2}
+section[id]{scroll-margin-top:72px}
+body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+::selection{background:var(--accent);color:var(--accent-ink)}
+
+/* buttons: round, soft, tactile */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:13px 28px;font-weight:700;letter-spacing:.01em;border:2px solid var(--accent);transition:transform .18s ease,box-shadow .18s ease,background .18s ease,color .18s ease,filter .18s ease;cursor:pointer}
+.btn.primary{background:linear-gradient(135deg,var(--accent) 0%,var(--accent-2) 100%);border-color:transparent;color:var(--accent-ink);box-shadow:0 8px 22px color-mix(in srgb,var(--accent) 38%,transparent)}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px color-mix(in srgb,var(--accent) 48%,transparent);filter:none}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn.ghost:hover{background:var(--accent);color:var(--accent-ink);transform:translateY(-2px);box-shadow:0 10px 24px color-mix(in srgb,var(--accent) 30%,transparent);filter:none}
+.btn:hover{text-decoration:none}
+.btn:active{transform:translateY(0) scale(.98)}
+.btn:focus-visible,.theme:focus-visible,.nav nav a:focus-visible{outline:none;box-shadow:var(--ring)}
+
+/* nav */
+.nav nav a{padding:7px 14px;border-radius:999px;transition:background .18s ease,color .18s ease}
+.nav nav a:hover{background:var(--accent-soft);color:var(--accent)}
+.theme{border-radius:999px;padding:8px 18px;font-weight:700;transition:transform .18s ease,background .18s ease,border-color .18s ease,box-shadow .18s ease}
+.theme:hover{background:var(--accent-soft);border-color:var(--accent);transform:translateY(-1px)}
+header.nav{box-shadow:0 1px 0 var(--line),0 8px 24px rgba(20,32,43,.04)}
+
+/* hero glow */
+.hero{position:relative;overflow:hidden;background:radial-gradient(900px 420px at 88% -10%,color-mix(in srgb,var(--accent) 14%,transparent),transparent 70%),radial-gradient(700px 360px at -5% 105%,color-mix(in srgb,var(--accent-2) 10%,transparent),transparent 70%)}
+.hero .grid{position:relative}
+.hero h1{background:linear-gradient(120deg,var(--text) 55%,var(--accent) 130%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+
+/* cards, tiles, shots: rounder with lift */
+.card,.stat,.step,.confidential,.shot,.tg{border-radius:var(--radius)}
+.tg{border-radius:16px}
+.card,.stat,.step{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
+.card:hover,.stat:hover,.step:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(20,32,43,.12);border-color:color-mix(in srgb,var(--accent) 35%,var(--line))}
+.stat{border-top-width:5px}
+.stat .ico{border-radius:50%}
+.shot{transition:transform .25s ease,box-shadow .25s ease}
+.shot img{transition:transform .5s ease}
+.shot:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(20,32,43,.18)}
+.shot:hover img{transform:scale(1.03)}
+.chip{transition:background .18s ease,color .18s ease,transform .18s ease}
+.chip:hover{background:var(--accent);color:var(--accent-ink);transform:translateY(-1px)}
+.tag{border-radius:999px;padding:4px 14px}
+.step::before{box-shadow:0 4px 12px color-mix(in srgb,var(--accent) 40%,transparent)}
+.job::before{box-shadow:0 0 0 5px color-mix(in srgb,var(--accent) 18%,transparent)}
+h2{position:relative}
+.eyebrow::before{content:"";display:inline-block;width:28px;height:3px;border-radius:99px;background:var(--accent);vertical-align:middle;margin-right:10px}
+.lb img{border-radius:20px}
+footer{background:var(--bg-alt)}
+
+@media (max-width:760px){.nav .wrap{padding:0 14px;gap:8px}.nav nav{gap:2px}.nav nav a{padding:6px 10px;font-size:.95rem}.theme{padding:6px 12px;font-size:.85rem}.brand{font-size:1rem}.btn{padding:12px 22px}}
+@media (max-width:480px){.nav nav a.hide-xs{display:none}}
+.stat{position:relative;overflow:hidden;border-top-width:1px}
+.stat::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.btn:hover,.card:hover,.stat:hover,.step:hover,.shot:hover,.chip:hover{transform:none}}
 </style>
 </head>
 <body>
@@ -148,7 +204,7 @@ footer{padding:28px 0;border-top:1px solid var(--line);color:var(--muted);font-s
       <a class="hide-sm" href="#about">About</a>
       <a class="hide-sm" href="#skills">Skills</a>
       <a class="hide-sm" href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
+      <a class="hide-xs" href="#projects">Projects</a>
       <a class="hide-sm" href="#process">How I Test</a>
       <a href="#contact">Contact</a>
       <button class="theme" id="theme" type="button" aria-label="Toggle light and dark theme">Theme</button>
