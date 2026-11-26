@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Defect report (illustration)</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font:15px/1.55 system-ui,"Segoe UI",Roboto,sans-serif;background:#f4f5f7;color:#172b4d}
+.top{height:52px;background:#0b3d6b;color:#fff;display:flex;align-items:center;padding:0 24px;font-weight:700;letter-spacing:.04em}
+.ribbon{background:#fff3cd;color:#7a5b00;border-bottom:1px solid #f0d98a;text-align:center;font-size:13px;font-weight:700;letter-spacing:.06em;padding:6px;text-transform:uppercase}
+.wrap{max-width:1360px;margin:0 auto;padding:22px 24px;display:grid;grid-template-columns:1fr 340px;gap:20px}
+.card{background:#fff;border:1px solid #dfe1e6;border-radius:6px;padding:20px;margin-bottom:16px}
+.crumb{color:#5e6c84;font-size:13px;margin-bottom:6px}
+h1{font-size:24px;margin:0 0 12px}
+h3{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#5e6c84;margin:18px 0 6px}
+ol,ul{margin:0;padding-left:20px}
+.pill{display:inline-block;padding:2px 10px;border-radius:4px;font-size:12px;font-weight:700;text-transform:uppercase}
+.sev{background:#ffebe6;color:#bf2600}.st{background:#deebff;color:#0747a6}.ok{background:#e3fcef;color:#006644}
+.meta div{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #ebecf0}
+.meta span{color:#5e6c84}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:#5e6c84;padding:8px;border-bottom:2px solid #ebecf0;background:#fafbfc}
+td{padding:9px 8px;border-bottom:1px solid #ebecf0}
+code{background:#f4f5f7;border:1px solid #dfe1e6;border-radius:3px;padding:1px 6px;font-size:13px}
+.att{display:flex;gap:10px;flex-wrap:wrap}.att div{border:1px solid #dfe1e6;border-radius:6px;padding:10px 14px;background:#fafbfc;font-size:13px}
+</style></head><body>
+<div class="top">DEFECT TRACKER</div>
+<div class="ribbon">Illustration · synthetic data · not from any real project</div>
+<div class="wrap">
+  <div>
+    <div class="card">
+      <div class="crumb">Demo Project / Early Payment / DEMO-101</div>
+      <h1>Maker can approve own early-payment request when two signatures are required</h1>
+      <span class="pill sev">High</span> <span class="pill st">In review</span>
+      <h3>Environment</h3><p style="margin:0">Staging · Chrome (latest) · role: Maker + Checker (same user, two sessions)</p>
+      <h3>Steps to reproduce</h3>
+      <ol><li>Log in as <code>maker.demo</code> and create request <code>REQ-DEMO</code> for two eligible invoices.</li>
+      <li>Submit the request for approval (1 of 2 signatures collected).</li>
+      <li>Open the same request in the Approvals tab as <code>maker.demo</code>.</li>
+      <li>Click <b>Approve</b>.</li></ol>
+      <h3>Expected result</h3><p style="margin:0">Approve is disabled for the request's maker. The request stays at 1 of 2 signatures.</p>
+      <h3>Actual result</h3><p style="margin:0">Approve is enabled; the request moves to 2 of 2 and becomes eligible for disbursement. API returns <code>200</code> instead of <code>403</code>.</p>
+      <h3>Attachments</h3>
+      <div class="att"><div>📄 approve-own-request.har</div><div>🖼 approvals-tab.png</div><div>🖼 api-response-200.png</div></div>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0">Maker-checker test matrix (sample)</h3>
+      <table><tr><th>#</th><th>Scenario</th><th>Expected</th><th>Result</th></tr>
+      <tr><td>1</td><td>Maker approves own request</td><td>403 / button disabled</td><td><span class="pill sev">Fail</span></td></tr>
+      <tr><td>2</td><td>Checker approves maker's request</td><td>Signature recorded</td><td><span class="pill ok">Pass</span></td></tr>
+      <tr><td>3</td><td>Second checker completes 2 of 2</td><td>Status → Approved</td><td><span class="pill ok">Pass</span></td></tr>
+      <tr><td>4</td><td>Same checker signs twice</td><td>Second sign rejected</td><td><span class="pill ok">Pass</span></td></tr>
+      <tr><td>5</td><td>Viewer role opens Approvals</td><td>No action buttons</td><td><span class="pill ok">Pass</span></td></tr></table>
+    </div>
+  </div>
+  <div>
+    <div class="card meta"><h3 style="margin-top:0">Details</h3>
+      <div><span>Reporter</span><b>QA Engineer</b></div>
+      <div><span>Assignee</span><b>Developer (demo)</b></div>
+      <div><span>Priority</span><b>High</b></div>
+      <div><span>Found in</span><b>Build 1.4.2-rc1</b></div>
+      <div><span>Sprint</span><b>Sprint 18 (demo)</b></div>
+      <div><span>Labels</span><b>RBAC, maker-checker</b></div>
+    </div>
+    <div class="card"><h3 style="margin-top:0">Activity</h3>
+      <p style="margin:0 0 8px"><b>QA</b> logged defect with HAR and screenshots.</p>
+      <p style="margin:0 0 8px"><b>Dev</b> fixed role check on the approval endpoint.</p>
+      <p style="margin:0"><b>QA</b> re-tested on staging: scenarios 1–5 pass. <span class="pill ok">Ready to close</span></p>
+    </div>
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Early Payment (illustration)</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 system-ui,"Segoe UI",Roboto,sans-serif;background:#f3f5f8;color:#16212c}
+.top{height:56px;background:#102a43;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 24px}
+.top b{letter-spacing:.04em}.top span{opacity:.8;font-size:13px}
+.ribbon{background:#fff3cd;color:#7a5b00;border-bottom:1px solid #f0d98a;text-align:center;font-size:13px;font-weight:700;letter-spacing:.06em;padding:6px;text-transform:uppercase}
+.wrap{padding:24px;max-width:1360px;margin:0 auto}
+h1{font-size:22px;margin:0 0 4px}.sub{color:#5b6b7a;margin:0 0 18px}
+.tabs{display:flex;gap:4px;border-bottom:2px solid #dde3ea;margin-bottom:20px}
+.tab{padding:10px 18px;border:0;background:none;font:inherit;font-weight:700;color:#5b6b7a;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px}
+.tab.on{color:#1f76b8;border-color:#1f76b8}
+.panel{display:none}.panel.on{display:block}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px}
+.kpi{background:#fff;border:1px solid #dde3ea;border-radius:12px;padding:16px}
+.kpi small{color:#5b6b7a;text-transform:uppercase;letter-spacing:.06em;font-size:12px;font-weight:700}
+.kpi b{display:block;font-size:26px;margin-top:4px}
+.card{background:#fff;border:1px solid #dde3ea;border-radius:12px;padding:18px;margin-bottom:18px}
+.card h3{margin:0 0 12px;font-size:16px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;color:#5b6b7a;font-size:12px;text-transform:uppercase;letter-spacing:.06em;padding:10px;border-bottom:2px solid #e8edf2;background:#fafbfd}
+td{padding:11px 10px;border-bottom:1px solid #eef1f5}
+.pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:700}
+.ok{background:#dff5e6;color:#17713a}.wait{background:#fff0cc;color:#8a5a00}.bad{background:#fde1e1;color:#a12626}.info{background:#e1effa;color:#1c5f94}
+.btn{border:0;background:#1f76b8;color:#fff;border-radius:8px;padding:8px 14px;font:inherit;font-weight:700}
+.btn.sec{background:#e8f2fa;color:#1f76b8}
+.row{display:flex;gap:18px}.row>*{flex:1}
+.field{margin-bottom:12px}.field label{display:block;font-size:12px;font-weight:700;color:#5b6b7a;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.field div{background:#fff;border:1px solid #cfd8e1;border-radius:8px;padding:9px 12px}
+.bar{height:10px;background:#e8edf2;border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:#1f76b8}
+.steps{display:flex;gap:10px}.steps div{flex:1;padding:12px;border-radius:10px;background:#f3f5f8;border:1px solid #dde3ea;text-align:center;font-weight:700;font-size:13px}
+.steps .done{background:#dff5e6;border-color:#bfe6cc;color:#17713a}.steps .cur{background:#e1effa;border-color:#b8d7ee;color:#1c5f94}
+</style></head><body>
+<div class="top"><b>EARLY PAYMENT PORTAL</b><span>Demo Buyer Co. · demo.user@example.test</span></div>
+<div class="ribbon">Illustration · synthetic data · not the actual system</div>
+<div class="wrap">
+  <h1>Early Payment</h1><p class="sub">Request early payment against approved invoices. All names, amounts and IDs on this page are invented.</p>
+  <div class="tabs" id="tabs">
+    <button class="tab on" data-t="overview">Overview</button>
+    <button class="tab" data-t="eligible">Eligible Invoices</button>
+    <button class="tab" data-t="requests">Early Payment Requests</button>
+    <button class="tab" data-t="approvals">Approvals</button>
+    <button class="tab" data-t="history">History</button>
+  </div>
+
+  <div class="panel on" id="overview">
+    <div class="kpis">
+      <div class="kpi"><small>Eligible invoices</small><b>24</b></div>
+      <div class="kpi"><small>Eligible value</small><b>PKR 18.4M</b></div>
+      <div class="kpi"><small>Pending approvals</small><b>5</b></div>
+      <div class="kpi"><small>Disbursed this month</small><b>PKR 6.2M</b></div>
+    </div>
+    <div class="row">
+      <div class="card"><h3>Request pipeline</h3>
+        <div class="steps"><div class="done">1 · Select invoices</div><div class="done">2 · Review discount</div><div class="cur">3 · Approval</div><div>4 · Disbursement</div></div>
+        <p style="margin:16px 0 6px">Facility utilisation</p><div class="bar"><i style="width:62%"></i></div><small style="color:#5b6b7a">PKR 31M of PKR 50M used (demo figures)</small>
+      </div>
+      <div class="card"><h3>Recent activity</h3>
+        <table><tr><td>REQ-0007 submitted</td><td><span class="pill info">Submitted</span></td></tr>
+        <tr><td>REQ-0006 approved by checker</td><td><span class="pill ok">Approved</span></td></tr>
+        <tr><td>REQ-0005 returned for correction</td><td><span class="pill wait">Returned</span></td></tr></table>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="eligible">
+    <div class="card"><h3>Eligible invoices</h3>
+      <table><tr><th></th><th>Invoice</th><th>Supplier</th><th>Due date</th><th>Amount</th><th>Discount</th><th>Status</th></tr>
+      <tr><td>☑</td><td>INV-0101</td><td>Acme Supplier Ltd</td><td>2026-12-20</td><td>PKR 420,000</td><td>1.8%</td><td><span class="pill ok">Approved</span></td></tr>
+      <tr><td>☑</td><td>INV-0102</td><td>Acme Supplier Ltd</td><td>2026-12-28</td><td>PKR 310,000</td><td>1.9%</td><td><span class="pill ok">Approved</span></td></tr>
+      <tr><td>☐</td><td>INV-0103</td><td>Sample Textiles Co</td><td>2027-01-05</td><td>PKR 905,000</td><td>2.1%</td><td><span class="pill ok">Approved</span></td></tr>
+      <tr><td>☐</td><td>INV-0104</td><td>Demo Packaging</td><td>2027-01-12</td><td>PKR 188,500</td><td>2.2%</td><td><span class="pill wait">Under review</span></td></tr>
+      <tr><td>☐</td><td>INV-0105</td><td>Sample Textiles Co</td><td>2027-01-18</td><td>PKR 1,240,000</td><td>2.4%</td><td><span class="pill ok">Approved</span></td></tr></table>
+      <p style="margin:14px 0 0"><button class="btn">Request early payment (2 selected)</button> <button class="btn sec">Clear selection</button></p>
+    </div>
+  </div>
+
+  <div class="panel" id="requests">
+    <div class="row">
+      <div class="card"><h3>New request</h3>
+        <div class="field"><label>Selected invoices</label><div>INV-0101, INV-0102</div></div>
+        <div class="field"><label>Total invoice value</label><div>PKR 730,000</div></div>
+        <div class="field"><label>Discount (est.)</label><div>PKR 13,140</div></div>
+        <div class="field"><label>Net payable to supplier</label><div>PKR 716,860</div></div>
+        <button class="btn">Submit for approval</button>
+      </div>
+      <div class="card"><h3>My requests</h3>
+        <table><tr><th>Request</th><th>Invoices</th><th>Net</th><th>Status</th></tr>
+        <tr><td>REQ-0007</td><td>2</td><td>PKR 716,860</td><td><span class="pill info">Submitted</span></td></tr>
+        <tr><td>REQ-0006</td><td>1</td><td>PKR 395,000</td><td><span class="pill ok">Approved</span></td></tr>
+        <tr><td>REQ-0005</td><td>3</td><td>PKR 1,102,400</td><td><span class="pill wait">Returned</span></td></tr>
+        <tr><td>REQ-0004</td><td>1</td><td>PKR 250,000</td><td><span class="pill bad">Rejected</span></td></tr></table>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="approvals">
+    <div class="card"><h3>Pending approvals (maker-checker)</h3>
+      <table><tr><th>Request</th><th>Maker</th><th>Checker</th><th>Net</th><th>Signatures</th><th>Action</th></tr>
+      <tr><td>REQ-0007</td><td>maker.demo</td><td>checker.demo</td><td>PKR 716,860</td><td><span class="pill wait">1 of 2</span></td><td><button class="btn sec">Review</button></td></tr>
+      <tr><td>REQ-0008</td><td>maker.demo</td><td>checker.demo</td><td>PKR 1,480,000</td><td><span class="pill wait">0 of 2</span></td><td><button class="btn sec">Review</button></td></tr>
+      <tr><td>REQ-0009</td><td>maker.demo</td><td>checker.demo</td><td>PKR 330,250</td><td><span class="pill ok">2 of 2</span></td><td><button class="btn sec">View</button></td></tr></table>
+      <p style="color:#5b6b7a;margin:12px 0 0">A maker cannot approve their own request. Approval needs the configured number of signatories.</p>
+    </div>
+  </div>
+
+  <div class="panel" id="history">
+    <div class="card"><h3>History</h3>
+      <table><tr><th>Date</th><th>Request</th><th>Event</th><th>User</th><th>Amount</th></tr>
+      <tr><td>2026-11-24</td><td>REQ-0007</td><td>Submitted</td><td>maker.demo</td><td>PKR 716,860</td></tr>
+      <tr><td>2026-11-22</td><td>REQ-0006</td><td>Disbursed</td><td>system</td><td>PKR 395,000</td></tr>
+      <tr><td>2026-11-21</td><td>REQ-0006</td><td>Approved (2 of 2)</td><td>checker.demo</td><td>PKR 395,000</td></tr>
+      <tr><td>2026-11-19</td><td>REQ-0005</td><td>Returned for correction</td><td>checker.demo</td><td>PKR 1,102,400</td></tr>
+      <tr><td>2026-11-18</td><td>REQ-0004</td><td>Rejected</td><td>checker.demo</td><td>PKR 250,000</td></tr></table>
+    </div>
+  </div>
+</div>
+<script>
+document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll(".tab,.panel").forEach(e=>e.classList.remove("on"));
+  b.classList.add("on"); document.getElementById(b.dataset.t).classList.add("on");
+});
+</script></body></html>
