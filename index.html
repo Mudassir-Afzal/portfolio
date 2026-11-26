@@ -10,12 +10,6 @@
   --bg:#ffffff; --bg-alt:#f5f7fa; --card:#ffffff; --text:#14202b; --muted:#566574;
   --line:#e2e8ee; --accent:#1f76b8; --accent-ink:#ffffff; --accent-soft:#e8f2fa; --shadow:0 6px 24px rgba(20,32,43,.08);
 }
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#0f161d; --bg-alt:#141d26; --card:#18222d; --text:#e8eef4; --muted:#9db0c1;
-    --line:#26333f; --accent:#4aa3e6; --accent-ink:#06121c; --accent-soft:#16293a; --shadow:0 6px 24px rgba(0,0,0,.35);
-  }
-}
 :root[data-theme="dark"]{
   --bg:#0f161d; --bg-alt:#141d26; --card:#18222d; --text:#e8eef4; --muted:#9db0c1;
   --line:#26333f; --accent:#4aa3e6; --accent-ink:#06121c; --accent-soft:#16293a; --shadow:0 6px 24px rgba(0,0,0,.35);
@@ -428,7 +422,7 @@ footer{padding:28px 0;border-top:1px solid var(--line);color:var(--muted);font-s
   var root=document.documentElement, key="portfolio-theme";
   try{var s=localStorage.getItem(key); if(s) root.setAttribute("data-theme",s);}catch(e){}
   document.getElementById("theme").addEventListener("click",function(){
-    var dark=root.getAttribute("data-theme")==="dark" || (!root.getAttribute("data-theme") && matchMedia("(prefers-color-scheme: dark)").matches);
+    var dark=root.getAttribute("data-theme")==="dark";
     var next=dark?"light":"dark"; root.setAttribute("data-theme",next);
     try{localStorage.setItem(key,next);}catch(e){}
   });
